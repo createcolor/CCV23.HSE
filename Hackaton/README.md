@@ -36,6 +36,37 @@ $ pip install -r requirements.txt
 
 TODO 
 
+
+### Generate Data
+
+Process to generate dataset.
+
+```bash
+$ python main.py -h
+Process to generate images.
+
+positional arguments:
+  input_path      Path to the directory containing spectral images. (in str format)
+  output_path     Path to save ground-truth and sample. (in str format)
+  mean            Mean it is mean of noise.  (in float format) 
+  sigma           Sigma it is sigma of noise. (in float format)
+
+optional arguments:
+  -h, --help         show this help message and exit
+```
+Example:
+
+```bash
+$ python main.py --input_path ./data_example/input_data/ --output_path ./data_example/output_generated_data/ --mean 1.3 --sigma 1.15
+Processing... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 0:00:00
+Processing... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 0:00:00
+Data had created successfully for spectral image: ./data_example/input_data/2019-08-25_006.h5
+```
+
+All data will be saved in `output_path` directory in our example, it will be saved in `./data_example/output_generated_data/`.
+The generated data will be in `.npy`format and prefix `gt` mean Ground truth and `sample` is generated data using 
+`Canon 600D camera`
+
 ### Evaluator
 
 This is a evaluator for Image Sigral Processing pieplines.

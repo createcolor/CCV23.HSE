@@ -28,7 +28,7 @@ class GDataset:
         xyz_img = spectral2xyz.spectral_to_XYZ(spectral_img)
 
         result = {
-            "image": xyz_img,
+            "image": xyz_img.T,
             "cmfs": spectral2xyz.cmfs
         }
 
@@ -56,8 +56,8 @@ class GDataset:
         if sigma is None:
             sigma = np.random.randint(low=10, high=25, size=1)
 
-        xyz_img = spectral2xyz.spectral_to_XYZ(spectral_img, light_source)
-        sRGB_img = SRGB.XYZ_to_sRGB(xyz_img.T)
+        xyz_img = spectral2xyz.spectral_to_XYZ(spectral_img, light_source).T
+        sRGB_img = SRGB.XYZ_to_sRGB(xyz_img)
         bayer_img = bayer.sRGB_to_Bayer(sRGB_img)
         noise_img = bayer.add_gaussian_noise(bayer_img, mean=mean, sigma=sigma)
 
@@ -84,18 +84,18 @@ def get_spectral_images(path):
 
 
 if __name__ == "__main__":
-    default_input_path = osp.abspath(osp.join(Path(__file__).parent.absolute(), "./dataset/train/"))
-    default_output_path = osp.abspath(osp.join(Path(__file__).parent.absolute(), "./results/"))
+    default_input_path = osp.abspath(osp.join(Path(__file__).parent.absolute(), "./input_data/"))
+    default_output_path = osp.abspath(osp.join(Path(__file__).parent.absolute(), "./output_generated_data/"))
 
-    parser = argparse.ArgumentParser(description='Process to generate images.')
+    parser = argparse.ArgumentParser(description='Process to generate images. (in str format)')
     parser.add_argument('--input_path', type=str, default=default_input_path,
-                        help='Path to the directory containing spectral images.')
+                        help='Path to the directory containing spectral images. (in str format)')
     parser.add_argument('--output_path', type=str, default=default_output_path,
-                        help='Path to the directory containing spectral images.')
+                        help='Path to save ground-truth and sample')
     parser.add_argument('--mean', type=float, default=None,
-                        help='Mean for noise generation.')
+                        help='it is mean of noise. (in float format)')
     parser.add_argument('--sigma', type=float, default=None,
-                        help='Sigma for noise generation.')
+                        help='it is sigma of noise. (in float format)')
 
     args = parser.parse_args()
     input_path = args.input_path
@@ -109,5 +109,6 @@ if __name__ == "__main__":
         for spectral_image in spectral_images:
             gt = dataset.gt(spectral_image)
             sample = dataset.sample(spectral_image, mean=mean, sigma=sigma)
+            print(f"Data had created successfully for spectral image: {spectral_image} .")
     else:
         print("Please provide a valid input path")
