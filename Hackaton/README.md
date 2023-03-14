@@ -43,7 +43,7 @@ Process to generate dataset.
 
 ```bash
 $ python main.py -h
-Process to generate images.
+Process to generate dataset.
 
 positional arguments:
   input_path      Path to the directory containing spectral images. (in str format)

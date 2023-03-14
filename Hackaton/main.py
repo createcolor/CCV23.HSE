@@ -87,7 +87,7 @@ if __name__ == "__main__":
     default_input_path = osp.abspath(osp.join(Path(__file__).parent.absolute(), "./input_data/"))
     default_output_path = osp.abspath(osp.join(Path(__file__).parent.absolute(), "./output_generated_data/"))
 
-    parser = argparse.ArgumentParser(description='Process to generate images. (in str format)')
+    parser = argparse.ArgumentParser(description='Process to generate dataset. (in str format)')
     parser.add_argument('--input_path', type=str, default=default_input_path,
                         help='Path to the directory containing spectral images. (in str format)')
     parser.add_argument('--output_path', type=str, default=default_output_path,
