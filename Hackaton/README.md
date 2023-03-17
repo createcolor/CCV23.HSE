@@ -37,7 +37,7 @@ $ pip install -r requirements.txt
 Process to generate dataset.
 
 ```bash
-$ python dataset_geenrator.py -h
+$ python dataset_generator.py -h
 Process to generate dataset.
 
 positional arguments:
@@ -53,7 +53,7 @@ optional arguments:
 Example:
 
 ```bash
-$ python dataset_geenrator.py --input_path ./data_example/input_data/ --output_path ./data_example/output_generated_data/ --seed 40
+$ python dataset_generator.py --input_path ./data_example/input_data/ --output_path ./data_example/output_generated_data/ --seed 40
 Processing... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 0:00:00
 Processing... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 0:00:00
 Data had created successfully for spectral image: ./data_example/input_data/2019-08-25_006.h5
