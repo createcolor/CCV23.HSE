@@ -5,7 +5,12 @@ import os.path as osp
 
 
 class Lighting:
-    def __init__(self):
+    def __init__(self, seed=None):
+        if seed is None:
+            np.random.seed(42)
+        else:
+            np.random.seed(seed)
+
         dir = osp.join(Path(__file__).parent.absolute(), "./light/CIE_015_4_Data.xlsx")
         self.df = pd.read_excel(dir, sheet_name="SPD CIE illuminants")
         self.df = self.df.iloc[:, [0, 1, 4, 5, 6]]

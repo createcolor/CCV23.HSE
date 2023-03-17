@@ -44,7 +44,8 @@ positional arguments:
   input_path      Path to the directory containing spectral images. (in str format)
   output_path     Path to save ground-truth and sample. (in str format)
   mean            Mean it is mean of noise.  (in float format) 
-  sigma           Sigma it is sigma of noise. (in float format)
+  sigma           Sigma it is sigma of noise. (in float format) advance 
+  seed            Random seed for light select and noise        advance
 
 optional arguments:
   -h, --help         show this help message and exit
@@ -52,7 +53,7 @@ optional arguments:
 Example:
 
 ```bash
-$ python dataset_geenrator.py --input_path ./data_example/input_data/ --output_path ./data_example/output_generated_data/ --mean 1.3 --sigma 1.15
+$ python dataset_geenrator.py --input_path ./data_example/input_data/ --output_path ./data_example/output_generated_data/ --seed 40
 Processing... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 0:00:00
 Processing... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 0:00:00
 Data had created successfully for spectral image: ./data_example/input_data/2019-08-25_006.h5

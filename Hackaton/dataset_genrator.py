@@ -28,7 +28,7 @@ class GDataset:
         xyz_img = spectral2xyz.spectral_to_XYZ(spectral_img)
 
         result = {
-            "image": xyz_img.T,
+            "xyz": xyz_img.T,
             "cmfs": spectral2xyz.cmfs
         }
 
@@ -39,10 +39,10 @@ class GDataset:
 
         return result
 
-    def sample(self, path_to_spectral_image, mean=None, sigma=None):
+    def sample(self, path_to_spectral_image, mean=None, sigma=None, seed=None):
         spectral2xyz = Spectral2XYZ(path_to_cmfs="./utils/cmf/Canon 600D.csv")
 
-        lighting = Lighting()
+        lighting = Lighting(seed=seed)
         SRGB = XYZ_TO_SRGB()
         bayer = Bayer()
 
@@ -52,9 +52,9 @@ class GDataset:
         light_source = lighting.select_random_light()
 
         if mean is None:
-            mean = 2 * np.random.sample(1) - 1
+            mean = 0
         if sigma is None:
-            sigma = np.random.randint(low=10, high=25, size=1)
+            sigma = np.random.randint(low=5, high=15, size=1)
 
         xyz_img = spectral2xyz.spectral_to_XYZ(spectral_img, light_source).T
         sRGB_img = SRGB.XYZ_to_sRGB(xyz_img)
@@ -96,19 +96,22 @@ if __name__ == "__main__":
                         help='it is mean of noise. (in float format)')
     parser.add_argument('--sigma', type=float, default=None,
                         help='it is sigma of noise. (in float format)')
+    parser.add_argument('--seed', type=int, default=42, help='Random seed for light and noise image')
 
     args = parser.parse_args()
     input_path = args.input_path
     output_path = args.output_path
     mean = args.mean
     sigma = args.sigma
+    seed = args.seed
+    np.random.seed(seed)
 
     if osp.isdir(input_path):
         spectral_images = get_spectral_images(input_path)
         dataset = GDataset(save_to=output_path)
         for spectral_image in spectral_images:
             gt = dataset.gt(spectral_image)
-            sample = dataset.sample(spectral_image, mean=mean, sigma=sigma)
+            sample = dataset.sample(spectral_image, mean=mean, sigma=sigma, seed=seed)
             print(f"Data had created successfully for spectral image: {spectral_image} .")
     else:
         print("Please provide a valid input path")
