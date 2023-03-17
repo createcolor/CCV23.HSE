@@ -5,4 +5,4 @@ matplotlib
 pandas
 h5py
 rich
-colour
+colour-science
