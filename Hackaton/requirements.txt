@@ -3,6 +3,6 @@ numpy
 tqdm
 matplotlib
 pandas
-opencv-python
 h5py
 rich
+colour

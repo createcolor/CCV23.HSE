@@ -42,7 +42,7 @@ TODO
 Process to generate dataset.
 
 ```bash
-$ python main.py -h
+$ python dataset_geenrator.py -h
 Process to generate dataset.
 
 positional arguments:
@@ -57,7 +57,7 @@ optional arguments:
 Example:
 
 ```bash
-$ python main.py --input_path ./data_example/input_data/ --output_path ./data_example/output_generated_data/ --mean 1.3 --sigma 1.15
+$ python dataset_geenrator.py --input_path ./data_example/input_data/ --output_path ./data_example/output_generated_data/ --mean 1.3 --sigma 1.15
 Processing... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 0:00:00
 Processing... ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100% 0:00:00
 Data had created successfully for spectral image: ./data_example/input_data/2019-08-25_006.h5
