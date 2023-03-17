@@ -6,3 +6,5 @@ pandas
 h5py
 rich
 colour-science
+pandas
+openpyxl
