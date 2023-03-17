@@ -43,9 +43,9 @@ Process to generate dataset.
 positional arguments:
   input_path      Path to the directory containing spectral images. (in str format)
   output_path     Path to save ground-truth and sample. (in str format)
-  mean            Mean it is mean of noise.  (in float format) 
+  mean            Mean it is mean of noise.  (in float format)  advance
   sigma           Sigma it is sigma of noise. (in float format) advance 
-  seed            Random seed for light select and noise        advance
+  seed            Random seed for light and noise        
 
 optional arguments:
   -h, --help         show this help message and exit
