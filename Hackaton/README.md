@@ -32,11 +32,6 @@ $ python -m venv venv
 $ pip install -r requirements.txt
 ```
 
-### Demo
-
-TODO 
-
-
 ### Generate Data
 
 Process to generate dataset.
