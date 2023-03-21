@@ -57,8 +57,8 @@ class GDataset:
             sigma = np.random.randint(low=5, high=15, size=1)
 
         xyz_img = spectral2xyz.spectral_to_XYZ(spectral_img, light_source).T
-        sRGB_img = SRGB.XYZ_to_sRGB(xyz_img)
-        bayer_img = bayer.sRGB_to_Bayer(sRGB_img)
+        # sRGB_img = SRGB.XYZ_to_sRGB(xyz_img)
+        bayer_img = bayer.sRGB_to_Bayer(xyz_img)
         noise_img = bayer.add_gaussian_noise(bayer_img, mean=mean, sigma=sigma)
 
         result = {
