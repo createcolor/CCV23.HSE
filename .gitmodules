@@ -1,3 +1,6 @@
 [submodule "practice-01-debayering"]
 	path = practice-01-debayering
 	url = git@github.com:gosha20777/debayering.git
+[submodule "seminars/practice-01-debayering"]
+	path = seminars/practice-01-debayering
+	url = git@github.com:gosha20777/debayering.git
