@@ -93,7 +93,7 @@ def evaluate(
     psnr_list = []
     ssim_list = []
     predcted_images = [x for x in os.listdir(predcted_path) if x.lower().endswith('png')]
-    ground_truth_images = [x for x in os.listdir(predcted_path) if x.lower().endswith('png')]
+    ground_truth_images = [x for x in os.listdir(ground_truth_path) if x.lower().endswith('png')]
     assert len(predcted_images) == len(ground_truth_images), "The number of predicted images must match the number of ground truth images."
     
     for img_name in tqdm(predcted_images):
